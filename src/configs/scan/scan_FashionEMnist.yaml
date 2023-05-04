@@ -1,0 +1,61 @@
+
+# general setting.
+views: 2
+hidden_dim: 512
+device: 0
+seed: 42
+experiment_id: 0
+verbose: true
+note: 'training-scan'
+project_name: 'DMRIB'
+backbone:
+  type: 'cnn'
+  init_method: 'xavier'
+dataset:
+  name: 'FashionMnist'
+  class_num: 10
+train:
+  epochs: 50
+  batch_size: 128
+  optim: "adam"
+  lr: 0.0001
+  evaluate: 1
+  scheduler: 'constant'
+  resume: false
+
+consis_enc:
+  enable: true
+  backbone: 'resnet18'
+  channels: 1
+  max_pooling: false
+  activation: 'relu'
+  first_norm: false
+  output_dim: 512
+  project_dim: 128
+fusion:
+  pooling_method: 'mean'
+# transformation
+training_augmentation:
+  hflip: true
+  crop_size: 32
+  normalize:
+    mean: [0.2859]
+    std: [0.3530]
+  num_strong_augs: 4
+  cutout_kwargs:
+    n_holes: 1
+    length: 16
+    random: True
+
+
+valid_augmentation:
+  crop_size: 32
+  normalize:
+    mean: [0.485]
+    std: [0.229]
+
+selflabel:
+  scan_entropy_weight: 5.0
+  update_cluster_head_only: false
+  nheads: 1
+  num_neighbors: 20

@@ -1,0 +1,66 @@
+
+# general setting.
+views: 3
+hidden_dim: 512
+device: 0
+seed: 42
+experiment_id: 1
+verbose: true
+wandb: false
+project_name: 'DMRIB'
+backbone:
+  type: 'cnn'
+  init_method: 'xavier'
+dataset:
+  name: 'mvc-10'
+  class_num: 10
+  root: '/home/hades/notebooks/Experiment/data/mvc-10-low'
+train:
+  epochs: 500
+  batch_size: 512
+  optim: "sgd"
+  lr: 0.3
+  evaluate: 1
+  scheduler: 'cosine'
+  lr_decay_rate: 0.1
+  resume: false
+
+consis_enc:
+  enable: true
+  backbone: 'resnet34'
+  channels: 3
+  max_pooling: true
+  activation: 'relu'
+  first_norm: false
+  output_dim: 512
+  project_dim: 128
+  temperature: 0.07
+  loss_type: 'dclw'
+fusion:
+  pooling_method: 'mean'
+# transformation
+training_augmentation:
+  hflip: true
+  random_resized_crop:
+    size: 64
+    scale: [0.2, 1.0]
+  # for simclr (weak augmentation)
+  color_jitter_random_apply:
+    p: 0.8
+  color_jitter:
+    brightness: 0.4
+    contrast: 0.4
+    saturation: 0.4
+    hue: 0.1
+  random_grayscale: 
+    p: 0.2
+  normalize:
+    mean: [0.4914, 0.4822, 0.4465]
+    std: [0.229, 0.224, 0.225]
+
+
+valid_augmentation:
+  crop_size: 64
+  normalize:
+    mean: [0.4914, 0.4822, 0.4465]
+    std: [0.229, 0.224, 0.225]

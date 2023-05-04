@@ -1,0 +1,60 @@
+# For RIM-CAC
+# general setting.
+views: 2
+hidden_dim: 512
+device: 0
+seed: 42
+wandb: true
+experiment_id: 0
+verbose: true
+project_name: 'DMRIB'
+backbone:
+  type: 'cnn'
+dataset:
+  name: 'FashionMnist'
+  class_num: 10
+train:
+  epochs: 300
+  # 64, 128, 512, 1024
+  batch_size: 512
+  optim: "adam"
+  lr: 0.0005
+  evaluate: 5
+  scheduler: 'constant'
+  resume: false
+
+consis_enc:
+  enable: true
+  backbone: 'resnet18'
+  channels: 1
+  max_pooling: false
+  activation: 'relu'
+  first_norm: false
+  output_dim: 512
+  project_dim: 128
+fusion:
+  type: "CV"
+  pooling_method: 'mean'
+vspecific:
+  enable: true
+  expands: 4
+  kld_weight: 0.005
+  # 2, 5, 10, 15, 20
+  latent_dim: 15
+  best_view: 0
+disent:
+  # 0.001, 0.01, 0.05, 0.1, 0.5
+  lam: 0.01
+
+  
+valid_augmentation:
+  crop_size: 32
+  use_normalize: false
+  normalize:
+    mean: [0.485]
+    std: [0.229]
+
+selflabel:
+  apply_class_balancing: True
+  nheads: 1
+  confidence_threshold: 0.99

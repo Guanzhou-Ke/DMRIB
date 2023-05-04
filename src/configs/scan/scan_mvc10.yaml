@@ -1,0 +1,63 @@
+
+# general setting.
+views: 3
+hidden_dim: 512
+device: 0
+seed: 42
+experiment_id: 1
+wandb: false
+verbose: true
+note: 'training-scan'
+project_name: 'DMRIB'
+backbone:
+  type: 'cnn'
+  init_method: 'xavier'
+dataset:
+  name: 'mvc-10'
+  class_num: 10
+  root: '/home/hades/notebooks/Experiment/data/mvc-10-low'
+train:
+  epochs: 50
+  batch_size: 128
+  optim: "adam"
+  lr: 0.0001
+  evaluate: 1
+  scheduler: 'constant'
+  resume: false
+
+consis_enc:
+  enable: true
+  backbone: 'resnet34'
+  channels: 3
+  max_pooling: true
+  activation: 'relu'
+  first_norm: false
+  output_dim: 512
+  project_dim: 128
+fusion:
+  pooling_method: 'mean'
+# transformation
+training_augmentation:
+  hflip: true
+  crop_size: 64
+  normalize:
+    mean: [0.4914, 0.4822, 0.4465]
+    std: [0.229, 0.224, 0.225]
+  num_strong_augs: 4
+  cutout_kwargs:
+    n_holes: 1
+    length: 64
+    random: True
+
+
+valid_augmentation:
+  crop_size: 64
+  normalize:
+    mean: [0.4914, 0.4822, 0.4465]
+    std: [0.229, 0.224, 0.225]
+
+selflabel:
+  scan_entropy_weight: 2.0
+  update_cluster_head_only: false
+  nheads: 2
+  num_neighbors: 10

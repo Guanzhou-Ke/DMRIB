@@ -1,0 +1,61 @@
+
+# general setting.
+views: 2
+hidden_dim: 512
+device: 0
+seed: 42
+experiment_id: 0
+verbose: true
+wandb: false
+note: 'training-selflabel'
+project_name: 'DMRIB'
+backbone:
+  type: 'cnn'
+  init_method: 'xavier'
+dataset:
+  name: 'EdgeMnist'
+  class_num: 10
+train:
+  epochs: 20
+  batch_size: 1000
+  optim: "adam"
+  lr: 0.0001
+  evaluate: 1
+  scheduler: 'constant'
+  resume: false
+
+consis_enc:
+  enable: true
+  backbone: 'resnet18'
+  channels: 1
+  max_pooling: false
+  activation: 'relu'
+  first_norm: false
+  output_dim: 512
+  project_dim: 128
+fusion:
+  pooling_method: 'mean'
+# transformation
+training_augmentation:
+  hflip: false
+  crop_size: 32
+  normalize:
+    mean: [0.1307]
+    std: [0.3081]
+  num_strong_augs: 4
+  cutout_kwargs:
+    n_holes: 1
+    length: 16
+    random: True
+
+
+valid_augmentation:
+  crop_size: 32
+  normalize:
+    mean: [0.1307]
+    std: [0.3081]
+
+selflabel:
+  apply_class_balancing: True
+  nheads: 1
+  confidence_threshold: 0.99

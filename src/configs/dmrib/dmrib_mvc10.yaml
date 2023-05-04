@@ -1,0 +1,58 @@
+# For RIM-CAC
+# general setting.
+views: 3
+hidden_dim: 512
+device: 0
+seed: 1
+wandb: true
+experiment_id: 1
+verbose: true
+project_name: 'DMRIB'
+backbone:
+  type: 'cnn'
+dataset:
+  name: 'mvc-10'
+  class_num: 10
+  root: '/home/hades/notebooks/Experiment/data/mvc-10-low'
+train:
+  epochs: 150
+  batch_size: 128
+  optim: "adam"
+  lr: 0.0005
+  evaluate: 10
+  scheduler: 'constant'
+  lr_decay_rate: 0.9
+  resume: false
+
+consis_enc:
+  enable: true
+  backbone: 'resnet34'
+  channels: 3
+  max_pooling: true
+  activation: 'relu'
+  first_norm: false
+  output_dim: 512
+  project_dim: 128
+fusion:
+  type: "CV"
+  pooling_method: 'mean'
+vspecific:
+  enable: true
+  expands: 4
+  kld_weight: 0.005
+  latent_dim: 10
+  best_view: 0
+disent:
+  lam: 0.01
+
+valid_augmentation:
+  crop_size: 64
+  normalize:
+    mean: [0.4914, 0.4822, 0.4465]
+    std: [0.2023, 0.1994, 0.2010]
+
+selflabel:
+  apply_class_balancing: True
+  confidence_threshold: 0.90
+  nheads: 2
+  

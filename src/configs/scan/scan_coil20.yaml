@@ -1,0 +1,63 @@
+
+# general setting.
+views: 2
+hidden_dim: 512
+device: 0
+seed: 42
+experiment_id: 0
+verbose: true
+wandb: false
+note: 'training-pretext'
+project_name: 'DMRIB'
+backbone:
+  type: 'cnn'
+  init_method: 'xavier'
+dataset:
+  name: 'coil-20'
+  class_num: 20
+train:
+  epochs: 50
+  batch_size: 64
+  optim: "adam"
+  evaluate: 1
+  lr: 0.0001
+  scheduler: 'constant'
+
+consis_enc:
+  enable: true
+  backbone: 'resnet34'
+  channels: 1
+  max_pooling: true
+  activation: 'relu'
+  first_norm: false
+  output_dim: 512
+  project_dim: 128
+  temperature: 1.0
+  loss_type: 'dcl'
+fusion:
+  pooling_method: 'mean'
+# transformation
+training_augmentation:
+  hflip: true
+  crop_size: 64
+  num_strong_augs: 4
+  cutout_kwargs:
+    n_holes: 1
+    length: 16
+    random: True
+  normalize:
+    mean: [0.4901,]
+    std: [0.2821,]
+
+
+valid_augmentation:
+  crop_size: 64
+  normalize:
+    mean: [0.4901,]
+    std: [0.2821,]
+
+selflabel:
+  scan_entropy_weight: 2.0
+  update_cluster_head_only: false
+  nheads: 2
+  num_neighbors: 20
