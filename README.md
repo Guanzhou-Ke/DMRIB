@@ -38,6 +38,8 @@ python train_dmrib.py -f ./configs/dmrib/dmrib_EdgeMnist.yaml
 
 ## Validation
 
+Note: you can find the pre-train weigths at [Google Driver](https://drive.google.com/drive/folders/1CJcgIk2D2LkuWQG2U3W2AhM19C5iJphP?usp=sharing).
+
 ```
 python validate.py -f ./configs/dmrib/dmrib_EdgeMnist.yaml
 ```
