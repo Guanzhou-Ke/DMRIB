@@ -38,7 +38,7 @@ python train_dmrib.py -f ./configs/dmrib/dmrib_EdgeMnist.yaml
 
 ## Validation
 
-Note: you can find the pre-train weigths at [here](https://userscloud.com/tuy0zzhqylhc).
+Note: you can find the pre-train weigths at [here](https://drive.google.com/file/d/1Q8u9_SlAgebI03guE0hfkxgrmBE5sy8p/view?usp=sharing).
 
 ```
 python validate.py -f ./configs/dmrib/dmrib_EdgeMnist.yaml
