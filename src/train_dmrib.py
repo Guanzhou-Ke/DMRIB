@@ -132,7 +132,7 @@ def main():
     
     use_wandb = config.wandb
     
-    result_dir = os.path.join(config.train.log_dir, 'DMRIB')
+    result_dir = os.path.join(config.train.log_dir, 'dmrib')
     os.makedirs(result_dir, exist_ok=True)
     checkpoint_path = os.path.join(result_dir, 'checkpoint.pth')
     finalmodel_path = os.path.join(result_dir, 'final_model.pth')

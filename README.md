@@ -40,7 +40,9 @@ python train_dmrib.py -f ./configs/dmrib/dmrib_EdgeMnist.yaml
 
 ## Validation
 
-Note: you can find the pre-train weigths at [here](https://drive.google.com/file/d/1Q8u9_SlAgebI03guE0hfkxgrmBE5sy8p/view?usp=sharing).
+Note: you can find the pre-train weigths at [here](https://drive.google.com/file/d/1Q8u9_SlAgebI03guE0hfkxgrmBE5sy8p/view?usp=sharing). And put the pretrained models into the following folders `path to/{config.train.log_dir}/{results}/{config.dataset.name}/eid-{config.experiment_id}/dmrib/final_model.pth`, respectively. For example, if you try to validate the `EdgeMnist` dataset, the default folder is `./experiments/results/EdgeMnist/eid-0/dmrib`. And then, put the pretrained model `edge-mnist.pth` into this folder and rename it to `final_model.pth`. 
+
+If you do not want to use the default setting, you have to modify the line 58 of  the `validate.py`.
 
 ```
 python validate.py -f ./configs/dmrib/dmrib_EdgeMnist.yaml

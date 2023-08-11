@@ -55,7 +55,7 @@ def main():
     device = torch.device(
         f"cuda:{config.device}") if torch.cuda.is_available() else torch.device('cpu')
     print(f'Use: {device}')
-    model_path = os.path.join(config.train.log_dir, 'rimcac', 'final_model.pth')
+    model_path = os.path.join(config.train.log_dir, 'dmrib', 'final_model.pth')
     
     # Create contrastive model.
     model = DMRIB(config, device=device)
