@@ -23,7 +23,7 @@ _C.verbose = True
 _C.wandb = True
 _C.experiment_id = 0
 # For multi-view setting
-_C.views = None
+_C.views = 2
 # Network output dim.
 _C.hidden_dim = 128
 # Experiment Notes.
