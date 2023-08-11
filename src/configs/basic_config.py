@@ -32,7 +32,7 @@ _C.note = ""
 
 # Network setting.
 _C.backbone = CN()
-_C.backbone.type = None
+_C.backbone.type = "cnn"
 # normalizations ['batch', 'layer']
 _C.backbone.normalization = 'batch'
 # activation
@@ -108,13 +108,13 @@ _C.valid_augmentation.normalize.std = [0.2023, 0.1994, 0.2010]
 # for training.
 _C.train = CN()
 _C.train.epochs = 100
-_C.train.batch_size = None
-_C.train.optim = None
+_C.train.batch_size = 512
+_C.train.optim = 'sgd'
 _C.train.lr = 0.001
 _C.train.num_workers = 4
 _C.train.save_log = True
 # if None, it will be set as './experiments/results/[model name]/[dataset name]'
-_C.train.log_dir = None
+_C.train.log_dir = ""
 # For test embedding dataset
 _C.train.save_embeddings = -1
 # for incomplete setting, float. [0-1], 0 denotes complete.
@@ -140,7 +140,7 @@ _C.fusion = CN()
 _C.fusion.type = 'C'
 _C.fusion.pooling_method = 'sum'
 # view specific fusion weight
-_C.fusion.vs_weights = None
+_C.fusion.vs_weights = 1.
 
 
 # for clustering setting.
