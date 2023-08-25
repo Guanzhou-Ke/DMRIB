@@ -53,3 +53,13 @@ python validate.py -f ./configs/dmrib/dmrib_EdgeMnist.yaml
 
 Thanks:
 ```Van Gansbeke, Wouter, et al. "Scan: Learning to classify images without labels." Computer Vision–ECCV 2020: 16th European Conference, Glasgow, UK, August 23–28, 2020, Proceedings, Part X. Cham: Springer International Publishing, 2020.```
+
+## Citation
+
+```
+Guanzhou Ke, Yang Yu, Guoqing Chao, Xiaoli Wang, Chenyang Xu,
+and Shengfeng He. 2023. Disentangling Multi-view Representations Be-
+yond Inductive Bias. In Proceedings of the 31st ACM International Conference
+on Multimedia (MM ’23), October 29–November 3, 2023, Ottawa, ON, Canada.
+ACM, New York, NY, USA, 9 pages. https://doi.org/10.1145/3581783.3611794
+```
