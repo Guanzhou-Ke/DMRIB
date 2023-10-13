@@ -1,6 +1,8 @@
 # DMRIB
 The official repos for ""Disentangling Multi-view Representations Beyond Inductive Bias"" (DMRIB)
 
+![framework](./misc/framework.png)
+
 - Status: Accepted in ACM MM 2023.
 
 
